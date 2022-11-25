@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { BeakerIcon } from '@heroicons/react/24/solid'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <BeakerIcon className="h-6 w-6 text-blue-500" />
+        <p>...</p>
+      </div>
+      <button className="btn btn-active">Button</button>
+      <button className="btn btn-active btn-primary">Button</button>
+      <button className="btn btn-active btn-secondary">Button</button>
+      <button className="btn btn-active btn-accent">Button</button>
+      <button className="btn btn-active btn-ghost">Button</button>
+      <button className="btn btn-active btn-link">Button</button>
     </div>
   );
 }
