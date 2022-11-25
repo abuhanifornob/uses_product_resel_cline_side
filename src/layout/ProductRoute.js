@@ -7,7 +7,7 @@ const ProductRoute = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className='md:flex'>
+            <div className='lg:flex'>
                 <div>
               <ProductsCategory></ProductsCategory>
              

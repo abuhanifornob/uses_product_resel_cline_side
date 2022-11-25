@@ -1,0 +1,65 @@
+[{
+        "productName": "Hp-450",
+        "productCategory": "ph",
+        "price": 50,
+        "productCondition": "good",
+        "images": "",
+        "mobileNumber": "01706203929",
+        "location": "Dhaka",
+        "description": "Production is good . ",
+        "reselPrice": 30,
+        "yearsOfUse": "2.5",
+        "postedTime": "10:10 AM",
+        "sellersName": "Abu Hanif"
+
+
+    },
+    {
+        "productName": "Dell-450",
+        "productCategory": "Dell",
+        "price": 50,
+        "productCondition": "good",
+        "images": "",
+        "mobileNumber": "01706203929",
+        "location": "Dhaka",
+        "description": "Production is good . ",
+        "reselPrice": 30,
+        "yearsOfUse": "2.5",
+        "postedTime": "10:10 AM",
+        "sellersName": "Abu Hanif"
+
+
+    },
+    {
+        "productName": "Toshiba-450",
+        "productCategory": "Toshiba",
+        "price": 50,
+        "productCondition": "good",
+        "images": "",
+        "mobileNumber": "01706203929",
+        "location": "Dhaka",
+        "description": "Production is good . ",
+        "reselPrice": 30,
+        "yearsOfUse": "2.5",
+        "postedTime": "10:10 AM",
+        "sellersName": "Abu Hanif"
+
+
+    },
+    {
+        "productName": "Lenovo-450",
+        "productCategory": "lenovo",
+        "price": 50,
+        "productCondition": "good",
+        "images": "",
+        "mobileNumber": "01706203929",
+        "location": "Dhaka",
+        "description": "Production is good . ",
+        "reselPrice": 30,
+        "yearsOfUse": "2.5",
+        "postedTime": "10:10 AM",
+        "sellersName": "Abu Hanif"
+
+
+    },
+]
