@@ -1,6 +1,7 @@
 import {
     createBrowserRouter,
   } from "react-router-dom";
+import DashBoard from "../DashBoard/DashBoard";
 
 
 import Main from "../layout/Main";
@@ -9,6 +10,7 @@ import Home from "../Pages/Home/Home";
 import HpProducts from "../Pages/Home/Products/HpProducts/HpProducts";
 import Login from "../Pages/Shareds/Login/Login";
 import SignUp from "../Pages/Shareds/SignUp/SignUp";
+import PrivetRouts from "./PrivetRouts/PrivetRouts";
 
 export const routs=createBrowserRouter([
     {
@@ -36,6 +38,11 @@ export const routs=createBrowserRouter([
             path:"/product/hp",
             element:<HpProducts></HpProducts>
         }]
+    },
+  
+    {
+        path:"/dashboard",
+        element:<PrivetRouts><DashBoard></DashBoard></PrivetRouts>
     },
   
 ])

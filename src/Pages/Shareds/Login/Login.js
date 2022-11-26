@@ -1,7 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 const provider = new GoogleAuthProvider();
 
@@ -9,6 +9,9 @@ const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [logninError,setLoginError]=useState("");
     const{singInEmailPassword,googleLongin}=useContext(AuthContext);
+    const location=useLocation();
+    const navigate=useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const handleLogin=data=>{
         console.log(data);
@@ -20,6 +23,7 @@ const Login = () => {
             //navigate(from, { replace: true });
             const user=result.user;
             console.log(user);
+            navigate(from, {replace:true});
         })
         .catch(error=>{
             setLoginError(error.message);
