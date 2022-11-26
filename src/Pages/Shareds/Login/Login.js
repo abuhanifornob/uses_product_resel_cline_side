@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
+const provider = new GoogleAuthProvider();
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [logninError,setLoginError]=useState("");
+    const{singInEmailPassword,googleLongin}=useContext(AuthContext);
 
     const handleLogin=data=>{
         console.log(data);
-    }
+        setLoginError("")
+        singInEmailPassword(data.email,data.password)
+        .then(result=>{
+           //setUserEmail(data.email);
+            // <navigate to="/login" state={{ from: location }} replace />
+            //navigate(from, { replace: true });
+            const user=result.user;
+            console.log(user);
+        })
+        .catch(error=>{
+            setLoginError(error.message);
+        })
+    } 
+
+ const handleGoogleLogin=()=>{
+    googleLongin(provider)
+    .then(()=>{})
+    .catch(error=>console.error(error))
+}
+    
     return (
         <div className='h-[556px] flex justify-center items-center ' >
         <div className='w-96 p-7 shadow-xl'>
@@ -50,7 +73,7 @@ const Login = () => {
                 <div className="divider">OR</div>
 
             </div>
-            <button  className="btn btn-outline btn-ghost w-full ">CONTINUE WITH GOOGLE</button>
+            <button onClick={handleGoogleLogin}  className="btn btn-outline btn-ghost w-full ">CONTINUE WITH GOOGLE</button>
 
         </div>
 
