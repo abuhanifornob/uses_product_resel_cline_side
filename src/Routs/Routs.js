@@ -6,6 +6,9 @@ import DashBoard from "../DashBoard/DashBoard";
 
 import Main from "../layout/Main";
 import ProductRoute from "../layout/ProductRoute";
+import About from "../Pages/About/About";
+import Blog from "../Pages/Blog/Blog";
+import FourOfFour from "../Pages/FourOfFour/FourOfFour";
 import Home from "../Pages/Home/Home";
 import AvailabelProducts from "../Pages/Home/Products/AvailabelProducts/AvailabelProducts";
 
@@ -29,6 +32,14 @@ export const routs=createBrowserRouter([
             path:"/signUp",
             element:<SignUp></SignUp>
         },
+        {
+            path:"/blog",
+            element:<Blog></Blog>
+        },
+        {
+            path:"/about",
+            element:<About></About>
+        }
     ]
     },
 
@@ -46,5 +57,10 @@ export const routs=createBrowserRouter([
         path:"/dashboard",
         element:<PrivetRouts><DashBoard></DashBoard></PrivetRouts>
     },
+
+    {
+        path:"*",
+        element:<FourOfFour></FourOfFour>
+    }
   
 ])

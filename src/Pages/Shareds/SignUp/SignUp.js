@@ -1,12 +1,14 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+const provider = new GoogleAuthProvider();
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const {createUser,userProfileUpdate}=useContext(AuthContext);
+    const {createUser,userProfileUpdate,googleLongin,user,loading}=useContext(AuthContext);
     const [signUpError, setSignUpError] = useState("");
     const navigate=useNavigate();
 
@@ -20,6 +22,7 @@ const SignUp = () => {
         .then(result=>{
             userProfileUpdate(userInfo)
             .then(()=>{
+                
                 const userInformation={
                     name:data.name,
                     email:data.email,
@@ -39,6 +42,24 @@ const SignUp = () => {
             signUpError(error.message);
         })
     }
+
+    const handleGoogleLogin=()=>{
+        googleLongin(provider)
+        .then(()=>{
+            if(loading){
+                return <progress className="progress w-56"></progress>
+            }
+            const userInformation={
+                name:user.displayName,
+                email:user.email,
+                role:'buyer'
+            }
+            userDataUpdate(userInformation)
+            console.log(user)
+
+        })
+        .catch(error=>console.error(error))
+    }
     const userDataUpdate=(userInformation)=>{
           fetch("http://localhost:5000/users",{
             method:"POST",
@@ -49,12 +70,11 @@ const SignUp = () => {
           })
           .then(res=>res.json())
           .then(data=>{
-            console.log(data);
+           // console.log(data);
             toast.success("Sign Up is Success !!!!");
                 navigate("/")
           })
-
-    }
+}
     return (
         <div className='h-[556px] flex justify-center items-center my-20' >
             <div className='w-96 p-7 shadow-xl'>
@@ -121,7 +141,7 @@ const SignUp = () => {
                     <div className="divider">OR</div>
 
                 </div>
-                <button className="btn btn-outline btn-ghost w-full ">CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className="btn btn-outline btn-ghost w-full ">CONTINUE WITH GOOGLE</button>
 
             </div>
 
