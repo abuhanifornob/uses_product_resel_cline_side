@@ -1,6 +1,7 @@
 import {
     createBrowserRouter,
   } from "react-router-dom";
+import AllUsers from "../DashBoard/AllUsers/AllUsers";
 import DashBoard from "../DashBoard/DashBoard";
 import MyBookingsProducts from "../DashBoard/MyBookingsProducts/MyBookingsProducts";
 
@@ -61,7 +62,12 @@ export const routs=createBrowserRouter([
         children:[{
             path:"/dashboard",
             element:<MyBookingsProducts></MyBookingsProducts>
-        }]
+        },
+        {
+         path:"/dashboard/allusers",
+         element:<AllUsers></AllUsers>
+        }
+    ]
     },
 
     {

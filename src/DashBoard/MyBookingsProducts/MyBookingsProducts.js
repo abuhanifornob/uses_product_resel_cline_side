@@ -5,20 +5,25 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const MyBookingsProducts = () => {
     const { user } = useContext(AuthContext);
-    const url = fetch(`http://localhost:5000/booking?email=${user?.email}`);
+    const url =`http://localhost:5000/booking?email=${user?.email}`;
 
     const { data: booking = [], isLoading, refetch } = useQuery({
         queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await url;
+            const res = await fetch(url,{
+               headers:{
+                authorization:`bearer ${localStorage.getItem("accessToken")}`
+               }
+            });
+
             const data = await res.json();
             return data;
         }
     });
     console.log(booking);
     return (
-        <div className='my-20'>
-            <h3 className='text-3xl font-bold mb-4'>My Bookings Products{booking.length}</h3>
+        <div className='my-10'>
+            <h3 className='text-3xl font-bold mb-4'>My Bookings Products {booking.length}</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
     

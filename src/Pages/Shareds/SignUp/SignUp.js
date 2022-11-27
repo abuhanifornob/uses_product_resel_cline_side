@@ -1,16 +1,23 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+import toast, { useToaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import useToken from '../../../Hooks/useToken';
 const provider = new GoogleAuthProvider();
 
 const SignUp = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit,formState: { errors } } = useForm();
     const {createUser,userProfileUpdate,googleLongin,user,loading}=useContext(AuthContext);
     const [signUpError, setSignUpError] = useState("");
     const navigate=useNavigate();
+    const [createEmail,setCreateEmail]=useState("")
+     const[token]=useToken(createEmail);
+    if(token){
+        navigate("/");
+    }
+    console.log(token);
 
     const handleSignUp = data => {
         setSignUpError("");
@@ -45,18 +52,19 @@ const SignUp = () => {
 
     const handleGoogleLogin=()=>{
         googleLongin(provider)
-        .then(()=>{
+        .then((result)=>{
             if(loading){
                 return <progress className="progress w-56"></progress>
             }
             // Try to Goolge Lognin User information database update
+            const user=result.user;
             const userInformation={
                 name:user.displayName,
                 email:user.email,
                 role:'buyer'
             }
             userDataUpdate(userInformation)
-            console.log(user)
+          
 
         })
         .catch(error=>console.error(error))
@@ -71,11 +79,11 @@ const SignUp = () => {
           })
           .then(res=>res.json())
           .then(data=>{
-           // console.log(data);
             toast.success("Sign Up is Success !!!!");
-                navigate("/")
+            setCreateEmail(userInformation.email);
           })
 }
+    
     return (
         <div className='h-[556px] flex justify-center items-center my-20' >
             <div className='w-96 p-7 shadow-xl'>

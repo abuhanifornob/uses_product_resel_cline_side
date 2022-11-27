@@ -1,18 +1,28 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import useToken from '../../../Hooks/useToken';
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [logninError,setLoginError]=useState("");
     const{singInEmailPassword,googleLongin}=useContext(AuthContext);
+    const[loginEmail,setLoginEmail]=useState("");
     const location=useLocation();
     const navigate=useNavigate();
+    const [token]=useToken(loginEmail);
     let from = location.state?.from?.pathname || "/";
 
+
+    if(token){
+        
+        navigate(from, {replace:true});
+        toast.success("Logn in Success !!!")
+    }
     const handleLogin=data=>{
         console.log(data);
         setLoginError("")
@@ -21,9 +31,10 @@ const Login = () => {
            //setUserEmail(data.email);
             // <navigate to="/login" state={{ from: location }} replace />
             //navigate(from, { replace: true });
-            const user=result.user;
-            console.log(user);
-            navigate(from, {replace:true});
+            // const user=result.user;
+            // console.log(user);
+            setLoginEmail(data.email);
+           
         })
         .catch(error=>{
             setLoginError(error.message);
@@ -32,8 +43,32 @@ const Login = () => {
 
  const handleGoogleLogin=()=>{
     googleLongin(provider)
-    .then(()=>{})
+    .then((result)=>{
+        const user=result.user;
+        console.log(user);
+            const userInformation={
+                name:user.displayName,
+                email:user.email,
+                role:'buyer'
+            }
+            googleLoginUserData(userInformation);
+    })
     .catch(error=>console.error(error))
+}
+
+const googleLoginUserData=(userInformation)=>{
+    fetch("http://localhost:5000/users",{
+      method:"POST",
+      headers:{
+          'content-type':'application/json'
+      },
+      body:JSON.stringify(userInformation)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      setLoginEmail(userInformation.email);
+      
+    })
 }
     
     return (
