@@ -12,7 +12,7 @@ const SignUp = () => {
 
     const handleSignUp = data => {
         setSignUpError("");
-        console.log(data);
+
         const userInfo={
             displayName:data.name
         }
@@ -20,10 +20,14 @@ const SignUp = () => {
         .then(result=>{
             userProfileUpdate(userInfo)
             .then(()=>{
-                const user=result.user;
-                toast.success("Sign Up is Success !!!!");
-                console.log(user);
-                navigate("/")
+                const userInformation={
+                    name:data.name,
+                    email:data.email,
+                    role:data.userType
+                }
+                userDataUpdate(userInformation)
+                // toast.success("Sign Up is Success !!!!");
+                // navigate("/")
             })
             .catch(error=>{
                 signUpError(error.message);
@@ -34,6 +38,22 @@ const SignUp = () => {
             console.error(error);
             signUpError(error.message);
         })
+    }
+    const userDataUpdate=(userInformation)=>{
+          fetch("http://localhost:5000/users",{
+            method:"POST",
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(userInformation)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data);
+            toast.success("Sign Up is Success !!!!");
+                navigate("/")
+          })
+
     }
     return (
         <div className='h-[556px] flex justify-center items-center my-20' >

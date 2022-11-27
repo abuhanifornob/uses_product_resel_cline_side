@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import ProductsCategory from '../Pages/Home/Products/ProductsCategory/ProductsCategory';
+import Footer from '../Pages/Shareds/Footer/Footer';
 import Navbar from '../Pages/Shareds/Navbar/Navbar';
 
 const ProductRoute = () => {
@@ -16,6 +17,8 @@ const ProductRoute = () => {
                   <Outlet></Outlet>
                 </div>
             </div>
+
+            <Footer></Footer>
         </div>
     );
 };
