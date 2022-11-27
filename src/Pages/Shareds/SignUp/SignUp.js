@@ -49,6 +49,7 @@ const SignUp = () => {
             if(loading){
                 return <progress className="progress w-56"></progress>
             }
+            // Try to Goolge Lognin User information database update
             const userInformation={
                 name:user.displayName,
                 email:user.email,

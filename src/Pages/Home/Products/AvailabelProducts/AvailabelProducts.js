@@ -5,8 +5,7 @@ import ProductsInformation from './ProductsInformation';
 
 const AvailabelProducts = () => {
     const products=useLoaderData();
-    const [bookProduct,setBookProduct]=useState(null)
-    console.log(bookProduct)
+    const [bookProduct,setBookProduct]=useState(null);
 
     return (
         <div>

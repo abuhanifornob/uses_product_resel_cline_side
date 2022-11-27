@@ -78,13 +78,14 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
-            Doctors Portal
+           Uses EI Market
           </Link>
         </div>
+       
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItem}</ul>
         </div>
-        <label htmlFor="dashBoardDrawer" tabIndex={3} className="btn btn-ghost lg:hidden">
+        <label htmlFor="dashboard-drawer" tabIndex={3} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

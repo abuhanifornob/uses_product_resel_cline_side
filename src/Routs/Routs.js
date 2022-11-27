@@ -2,6 +2,7 @@ import {
     createBrowserRouter,
   } from "react-router-dom";
 import DashBoard from "../DashBoard/DashBoard";
+import MyBookingsProducts from "../DashBoard/MyBookingsProducts/MyBookingsProducts";
 
 
 import Main from "../layout/Main";
@@ -14,6 +15,7 @@ import AvailabelProducts from "../Pages/Home/Products/AvailabelProducts/Availabe
 
 import Login from "../Pages/Shareds/Login/Login";
 import SignUp from "../Pages/Shareds/SignUp/SignUp";
+import DashboardRouts from "./DashboardRouts/DashboardRouts";
 import PrivetRouts from "./PrivetRouts/PrivetRouts";
 
 export const routs=createBrowserRouter([
@@ -55,7 +57,11 @@ export const routs=createBrowserRouter([
   
     {
         path:"/dashboard",
-        element:<PrivetRouts><DashBoard></DashBoard></PrivetRouts>
+        element:<PrivetRouts><DashboardRouts></DashboardRouts></PrivetRouts>,
+        children:[{
+            path:"/dashboard",
+            element:<MyBookingsProducts></MyBookingsProducts>
+        }]
     },
 
     {
