@@ -21,7 +21,7 @@ const Login = () => {
     if(token){
         
         navigate(from, {replace:true});
-        toast.success("Logn in Success !!!")
+       
         
     }
     const handleLogin=data=>{
@@ -35,6 +35,7 @@ const Login = () => {
             // const user=result.user;
             // console.log(user);
             setLoginEmail(data.email);
+            toast.success("Logn in Success !!!")
            
         })
         .catch(error=>{
@@ -46,7 +47,7 @@ const Login = () => {
     googleLongin(provider)
     .then((result)=>{
         const user=result.user;
-       
+      
             const userInformation={
                 name:user.displayName,
                 email:user.email,
@@ -67,6 +68,7 @@ const googleLoginUserData=(userInformation)=>{
     })
     .then(res=>res.json())
     .then(data=>{
+        toast.success("Logn in Success !!!")
       setLoginEmail(userInformation.email);
       
     })
