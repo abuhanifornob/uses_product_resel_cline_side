@@ -154,7 +154,7 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Year Of Purchase </span>
+                            <span className="label-text">Order Description </span>
                         </label>
                         <textarea {...register("description", { required: true })} type="text" placeholder="Enter Product Description Details" className="input input-bordered w-full h-32 " />
                         {errors.description && <span className='text-yellow-600'>This field is required</span>}
