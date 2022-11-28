@@ -167,33 +167,7 @@ const AddProduct = () => {
 
 
             </div>
-            {/* productName
-            "Hp-450"
-            productCategory
-            "Hp"
-            price
-            50
-            productCondition
-            "good"
-            images
-            "https://ibb.co/8mYRX6G"
-            mobileNumber
-            "01706203929"
-            location
-            "Dhaka"
-            description
-            "Production is good . "
-            reselPrice
-            30
-            yearsOfUse
-            "2.5"
-            postedTime
-            "10:10 AM"
-            sellersName
-            "Abu Hanif"
-            email
-            "nuri8@fate.com" */}
-
+    
 
         </div>
 
