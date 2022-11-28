@@ -1,6 +1,10 @@
 import {
     createBrowserRouter,
   } from "react-router-dom";
+import AllBuyers from "../DashBoard/AllUsers/AllBuyers/AllBuyers";
+import AddProduct from "../DashBoard/AllUsers/AllSellers/AddProduct/AddProduct";
+import AllSellers from "../DashBoard/AllUsers/AllSellers/AllSellers";
+import MyProducts from "../DashBoard/AllUsers/AllSellers/MyProducts/MyProducts";
 import AllUsers from "../DashBoard/AllUsers/AllUsers";
 import DashBoard from "../DashBoard/DashBoard";
 import MyBookingsProducts from "../DashBoard/MyBookingsProducts/MyBookingsProducts";
@@ -59,14 +63,37 @@ export const routs=createBrowserRouter([
     {
         path:"/dashboard",
         element:<PrivetRouts><DashboardRouts></DashboardRouts></PrivetRouts>,
-        children:[{
+        children:[
+            {
             path:"/dashboard",
+            element:<DashBoard></DashBoard>
+        },
+            {
+            path:"/dashboard/bookingsProducts",
             element:<MyBookingsProducts></MyBookingsProducts>
         },
         {
          path:"/dashboard/allusers",
          element:<AllUsers></AllUsers>
-        }
+        },
+        {
+            path:"/dashboard/buyers",
+            element:<AllBuyers></AllBuyers>
+        },
+        {
+            path:"/dashboard/sellers",
+            element:<AllSellers></AllSellers>
+        },
+        {
+            path:"/dashboard/seller/products",
+            element:<MyProducts></MyProducts>
+        },
+        {
+          path:"/dashboard/seller/addProduct",
+          element:<AddProduct></AddProduct>
+        },
+      
+
     ]
     },
 

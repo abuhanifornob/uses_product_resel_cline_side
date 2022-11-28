@@ -22,6 +22,7 @@ const Login = () => {
         
         navigate(from, {replace:true});
         toast.success("Logn in Success !!!")
+        
     }
     const handleLogin=data=>{
         console.log(data);
@@ -45,7 +46,7 @@ const Login = () => {
     googleLongin(provider)
     .then((result)=>{
         const user=result.user;
-        console.log(user);
+       
             const userInformation={
                 name:user.displayName,
                 email:user.email,

@@ -3,7 +3,7 @@ import React from 'react';
 const DashBoard = () => {
     return (
         <div>
-            <h1>DashBoard is Comming Soon.........</h1>
+            <h1>We are Show All Page contenct</h1>
         </div>
     );
 };

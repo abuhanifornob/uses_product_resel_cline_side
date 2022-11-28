@@ -20,7 +20,8 @@ const MyBookingsProducts = () => {
             return data;
         }
     });
-    console.log(booking);
+    
+    
     return (
         <div className='my-10'>
             <h3 className='text-3xl font-bold mb-4'>My Bookings Products {booking.length}</h3>
